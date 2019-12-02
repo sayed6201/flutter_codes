@@ -120,3 +120,82 @@ class Locations extends StatelessWidget {
 
   }
 }
+
+
+/*
+===========================================================================================
+(3)Map => list
+===========================================================================================
+*/
+
+#[1]-----------------------------------------------------------------
+
+final var questions = const [
+    {
+      'QuestionText': 'What\'s your favourite color?',
+      'Answers': [{'text':'blue', 'score': ''}, 'red', 'black', 'white'}]
+    },
+    {
+      'QuestionText': 'What\'s your favourite animal?',
+      'Answers': ['lion', 'elephant', 'zebra', 'cow']
+    },
+    {
+      'QuestionText': 'What\'s your favourite teacher?',
+      'Answers': ['Max', 'sayed', 'salman', 'sair']
+    },
+  ];
+
+class Quiz extends StatelessWidget {
+  //this value will not change after rendering as it is StatelessWidget
+  final List<Map<String, Object>> questions;
+  final int questionIndex;
+  final Function answerQuestionFunc;
+
+  Quiz({@required this.questions, @required this.answerQuestionFunc, @required this.questionIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        Question(questions[questionIndex]['QuestionText']),
+
+        //... will make the list a single widget
+        ...(questions[questionIndex]['Answers'] as List<String> ).map((answer){
+          return Answer(answerQuestionFunc,answer);
+        }).toList()
+      ],
+    );
+  }
+}
+
+[2]-----------------------------------------------------------------
+final var questions = const [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 11},
+        {'text': 'Elephant', 'score': 5},
+        {'text': 'Lion', 'score': 9},
+      ],
+    },
+    {
+      'questionText': 'Who\'s your favorite instructor?',
+      'answers': [
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+      ],
+    },
+  ]

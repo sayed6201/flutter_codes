@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 //keep Question.dart class public
 import './Question.dart';
 import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 //this app is executed when the app runs...
 void main() {
@@ -22,35 +24,53 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<StatefulWidget> {
   var _index = 0;
+  var _totalScore = 0;
 
   // This widget is the root of your application.
-  var _questions = [
+  final _questions = const [
     {
-      'QuestionText': 'What\'s your favourite color?',
-      'Answers': ['blue', 'red', 'black', 'white']
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1},
+      ],
     },
     {
-      'QuestionText': 'What\'s your favourite animal?',
-      'Answers': ['lion', 'elephant', 'zebra', 'cow']
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 11},
+        {'text': 'Elephant', 'score': 5},
+        {'text': 'Lion', 'score': 9},
+      ],
     },
     {
-      'QuestionText': 'What\'s your favourite teacher?',
-      'Answers': ['Max', 'sayed', 'salman', 'sair']
+      'questionText': 'Who\'s your favorite instructor?',
+      'answers': [
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+        {'text': 'Max', 'score': 1},
+      ],
     },
   ];
 
-  void _clikcAction() {
-    if (_index <= 2) {
+  void _resetQuiz(){
+    setState(() {
+      _totalScore = 0;
+      _index = 0;
+    });
+  }
+  void _clikcAction(int score) {
+    _totalScore += score;
+    print('your score: $_totalScore');
       setState(() {
         _index++;
       });
-    } else {
-      setState(() {
-        _index = 0;
-      });
-    }
     print(_index);
-    if (_index < 3) print(_questions.elementAt(_index));
+    if (_index < _questions.length) print('more questions');
   }
 
   @override
@@ -64,15 +84,14 @@ class _MyAppState extends State<StatefulWidget> {
           appBar: AppBar(
             title: Text('My app'),
           ),
-          body: Column(
-            children: <Widget>[
-              Question(_questions[_index]['QuestionText']),
-          //... will make the list a single widget
-          ...(_questions[_index]['Answers'] as List<String> ).map((answer){
-                return Answer(_clikcAction,answer);
-              }).toList()
-            ],
-          )),
+          body: _index < _questions.length ?
+              Quiz(
+                answerQuestionFunc: _clikcAction,
+                questionIndex: _index,
+                questions: _questions,
+              ): Result(_totalScore, _resetQuiz)
+
+      ),
     );
   }
 }
