@@ -1,0 +1,29 @@
+First, we will enable shrinking and obfuscation in the build file. Find build.gradle file which sits inside /android/app/ folder and add lines in bold
+
+android {
+
+    ...
+
+    buildTypes {
+
+        release {
+
+            signingConfig signingConfigs.debug     
+
+            minifyEnabled true
+            useProguard true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' 
+
+        }
+    }
+}
+Next we will create a configuration which will preserve entire Flutter wrapper code. Create /android/app/proguard-rules.pro file and insert inside:
+
+#Flutter Wrapper
+-keep class io.flutter.app.** { *; }
+-keep class io.flutter.plugin.**  { *; }
+-keep class io.flutter.util.**  { *; }
+-keep class io.flutter.view.**  { *; }
+-keep class io.flutter.**  { *; }
+-keep class io.flutter.plugins.**  { *; }

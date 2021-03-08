@@ -1,0 +1,120 @@
+{Afghanistan: 3, Åland Islands: 15, Albania: 6, Algeria: 62, American Samoa: 11, Andorra: 1, Angola: 8, Anguilla: 5, Antarctica: 9, Antigua and Barbuda: 4, Argentina: 10, Armenia: 7, Aruba: 14, Australia: 13, Austria: 12, Azerbaijan: 16, Bahamas: 32, Bahrain: 23, Bangladesh: 19, Barbados: 18, Belarus: 36, Belgium: 20, Belize: 37, Benin: 25, Bermuda: 27, Bhutan: 33, Bolivia: 29, Bonaire, Sint Eustatius and Saba: 30, Bosnia and Herzegovina: 17, Botswana: 35, Bouvet Island: 34, Brazil: 31, British Indian Ocean Territory: 106, British Virgin Islands: 239, Brunei Darussalam: 28, Bulgaria: 22, Burkina Faso: 21, Burundi: 24, Cambodia: 117, Cameroon: 47, Canada: 38, Cape Verde: 52, Cayman Islands: 124, Central African Republic: 41, Chad: 215, Chile: 46, China: 48, Christmas Island: 54, Cocos [Keeling] Islands: 39, Colombia: 49, Comoros: 119, Cook Islands: 45, Costa Rica: 50, Croatia: 98, Cuba: 51, Curaçao: 53, Cyprus: 55, Czech Republic: 56, Democratic Republic of thea
+
+
+{first_name: sayed, last_name: ahmed, gender_select: Male, nationality: Bnagladesh, birth_month: 2, birth_day: 18, birth_year: 2020, birth_country: 19, res_country: 19, 
+pass_num: ,  pi_month: 3, pi_day: 17, pi_year: 2020, px_month: 2, px_day: 18, px_year: 2020, visa_type: 14, city_birth: dhaka, current_city: dhaka, traveling_by: Bus, next_destination: kolkata, accommodation: Hotel, other_name: , visa_cost: , process_cost: , age_group: null, total_cost: null, processing_time: null}
+
+
+{
+"email" : "sumonsk2288@gmail.com",
+"apply_for" : "38",
+"apply_form" : "19",
+"a_month" : "1",
+"a_day" : "2",
+"a_year" : "2021",
+"d_month" : "02",
+"d_day" : "1",
+"d_year" : "2020",
+"telephone_" : "34324",
+"last_port" : "asds",
+"whereAmIFrom_" : "38",
+"visaType" : "14",
+"processingTime" : "21",
+"first_name" : [
+	"sayed",
+	"samir"
+	],
+"last_name" :  [
+	"ahmed",
+	"ahmed"
+	],
+"gender_select" : [
+	"male",
+	"male"
+	],
+"nationality" :  [
+	"19",
+	"19"
+	],
+"birth_month" :  [
+	"02",
+	"02"
+	],
+"birth_day" : [
+	"01",
+	"10"
+	],
+"birth_year" : [
+	"1995",
+	"2010"
+	],
+"birth_country" :  [
+	"19",
+	"19"
+	],
+"res_country" : [
+	"19",
+	"19"
+	],
+"pass_num" : [
+	"71283978321",
+	"32789237189"
+	],
+"pi_month" :[
+	"02",
+	"02"
+	],
+"pi_day" :  [
+	"01",
+	"01"
+	],
+"pi_year" : [
+	"2015",
+	"2017"
+	],
+"px_month" :  [
+	"02",
+	"02"
+	],
+"px_day" : [
+	"01",
+	"01"
+	],
+"px_year" : [
+	"2025",
+	"2027"
+	],
+"visa_type" : [
+	
+	],
+"city_birth" : [
+	"19",
+	"19"
+	],
+"current_city" :  [
+	"19",
+	"19"
+	],
+"traveling_by" :  [
+	"commercial flight",
+	"commercial flight"
+	],
+"next_destination" : [
+	"bangladesh",
+	"bangladesh"
+	],
+"accommodation" : [
+	"Hotel",
+	"hotel"
+	],
+"other_name" : [
+	"",
+	""
+	],
+"processingRadioOptions" : "23",
+"visa_cost" : "160.00",
+"process_cost" : "80.00",
+"age_group" : null,
+"total_cost" : null,
+"processing_time" : null
+}

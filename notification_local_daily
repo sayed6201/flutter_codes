@@ -1,0 +1,172 @@
+
+
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:nirvanaapp/reminder_update.dart';
+import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
+
+
+void main()  {
+  runApp(AlarmManagerExampleApp());
+}
+
+/// Example app for Espresso plugin.
+class AlarmManagerExampleApp extends StatelessWidget {
+  // This widget is the root of your application.
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: _AlarmHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class _AlarmHomePage extends StatefulWidget {
+  _AlarmHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _AlarmHomePageState createState() => _AlarmHomePageState();
+}
+
+class _AlarmHomePageState extends State<_AlarmHomePage> {
+
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+  var initializationSettings;
+
+  init() async {
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    if (Platform.isIOS) {
+      _requestIOSPermission();
+    }
+    initializePlatformSpecifics();
+  }
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  final routes = <String, WidgetBuilder>{
+    ReminderSetup.tag: (context) => ReminderSetup(),
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO(jackson): This has been deprecated and should be replaced
+    // with `headline4` when it's available on all the versions of
+    // Flutter that we test.
+    // ignore: deprecated_member_use
+    final textStyle = Theme.of(context).textTheme.display1;
+    return
+      MaterialApp(
+        navigatorKey: navigatorKey,
+        routes: routes,
+        home:Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Alarm fired times',
+              style: textStyle,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Total alarms fired: ',
+                  style: textStyle,
+                ),
+                Text(
+                  "",
+                  style: textStyle,
+                ),
+              ],
+            ),
+            RaisedButton(
+              child: Text(
+                'Schedule  Alarm',
+              ),
+              onPressed: () async {
+                await showDailyAtTime();
+                print("done");
+              },
+            ),
+            RaisedButton(
+              child: Text(
+                'Cancel',
+              ),
+              onPressed: () async {
+              },
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+
+  _requestIOSPermission() {
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        IOSFlutterLocalNotificationsPlugin>()
+        .requestPermissions(
+      alert: false,
+      badge: true,
+      sound: true,
+    );
+  }
+
+  initializePlatformSpecifics() {
+
+    var initializationSettingsAndroid =
+    AndroidInitializationSettings('logo');
+    var initializationSettingsIOS = IOSInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: false,
+      onDidReceiveLocalNotification: (id, title, body, payload) async {
+        // your call back to the UI
+      },
+    );
+    initializationSettings = InitializationSettings(
+        initializationSettingsAndroid, initializationSettingsIOS);
+
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: (String payload) async {
+//          onNotificationClick(payload);    // your call back to the UI
+        });
+  }
+
+  Future<void> showDailyAtTime() async {
+    var time = Time(7, 20, 0);
+    var androidChannelSpecifics = AndroidNotificationDetails(
+      'CHANNEL_ID 4',
+      'CHANNEL_NAME 4',
+      "CHANNEL_DESCRIPTION 4",
+      importance: Importance.Max,
+      priority: Priority.High,
+    );
+    var iosChannelSpecifics = IOSNotificationDetails();
+    var platformChannelSpecifics =
+    NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
+    await flutterLocalNotificationsPlugin.showDailyAtTime(
+      0,
+      'Test Title at ${time.hour}:${time.minute}.${time.second}',
+      'Test Body', //null
+      time,
+      platformChannelSpecifics,
+      payload: 'Test Payload',
+    );
+  }
+
+
+}

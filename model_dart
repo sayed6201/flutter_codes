@@ -1,0 +1,114 @@
+
+=============================================================================================
+Model 4
+=============================================================================================
+class SocialMedia {
+ int id;
+ String title;
+ String iconAsset;
+ bool isFavourite;
+
+ SocialMedia(
+     {@required this.id,
+     @required this.title,
+     @required this.iconAsset,
+     this.isFavourite = false});
+
+ void setFavourite(bool isFavourite) {
+   this.isFavourite = isFavourite;
+ }
+}
+
+=============================================================================================
+Model 1
+=============================================================================================
+
+import 'package:flutter/foundation.dart';
+
+enum Complexity {
+  Simple,
+  Challenging,
+  Hard,
+}
+
+enum Affordability {
+  Affordable,
+  Pricey,
+  Luxurious,
+}
+
+class Meal {
+  final String id;
+  final List<String> categories;
+  final String title;
+  final String imageUrl;
+  final List<String> ingredients;
+  final List<String> steps;
+  final int duration;
+  final Complexity complexity;
+  final Affordability affordability;
+  final bool isGlutenFree;
+  final bool isLactoseFree;
+  final bool isVegan;
+  final bool isVegetarian;
+
+  const Meal({
+    @required this.id,
+    @required this.categories,
+    @required this.title,
+    @required this.imageUrl,
+    @required this.ingredients,
+    @required this.steps,
+    @required this.duration,
+    @required this.complexity,
+    @required this.affordability,
+    @required this.isGlutenFree,
+    @required this.isLactoseFree,
+    @required this.isVegan,
+    @required this.isVegetarian,
+  });
+}
+
+=============================================================================================
+Model 2
+=============================================================================================
+
+import 'package:flutter/material.dart';
+
+class Category {
+  final String id;
+  final String title;
+  final Color color;
+
+  const Category({
+    @required this.id,
+    @required this.title,
+    this.color = Colors.orange,
+  });
+}
+
+
+=============================================================================================
+Model 3
+=============================================================================================
+import 'package:flutter/foundation.dart';
+
+class Product {
+  final String id;
+  final String title;
+  final String description;
+  final double price;
+  final String imageUrl;
+  bool isFavorite;
+
+  Product({
+    @required this.id,
+    @required this.title,
+    @required this.description,
+    @required this.price,
+    @required this.imageUrl,
+    this.isFavorite = false,
+  });
+}
+
+
