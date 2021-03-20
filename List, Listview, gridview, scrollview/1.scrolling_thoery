@@ -10,3 +10,19 @@ scaffold()
 		-singlechildscrollview()
 			-form()
 				-column	()
+
+
+-------------------------------------------------------------
+Make screen scroolable whrn Keyboard is open
+-------------------------------------------------------------
+-singlechildscrollview()
+	-Container
+		-Column
+			-[
+				-Container
+					-Padding
+				-Container
+					-Padding
+						-Column 
+							[]
+			]
