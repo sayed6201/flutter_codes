@@ -134,3 +134,13 @@ Container(
     ),
   ),
 )
+
+
+ClipRRect(
+    borderRadius: BorderRadius.circular(8.0),
+    child: Image.network(
+        subject['images']['large'],
+        height: 150.0,
+        width: 100.0,
+    ),
+)
